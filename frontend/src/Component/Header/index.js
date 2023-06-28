@@ -27,7 +27,7 @@ function Header() {
             </Form>
           </Nav>
 
-          <Nav.Link href="/">My Notes</Nav.Link>
+          <Nav.Link href="/mynotes">My Notes</Nav.Link>
 
           <NavDropdown title="Abhishek Junagade" id="navbarScrollingDropdown">
             <NavDropdown.Item href="/">Logout</NavDropdown.Item>

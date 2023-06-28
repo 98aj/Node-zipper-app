@@ -1,0 +1,22 @@
+.mainback {
+  min-height: 95vh;
+}
+
+.page {
+  width: 100%;
+  margin-top: 1rem;
+  font-weight: 200;
+}
+
+.heading {
+  padding: 1rem;
+  font-size: 3rem;
+  font-weight: 100;
+}
+
+@media screen and (max-width: 800px) {
+  .heading {
+    display: flex;
+    justify-content: center;
+  }
+}
