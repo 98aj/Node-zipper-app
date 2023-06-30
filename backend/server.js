@@ -12,13 +12,17 @@ const cors = require("cors"); //to connect forntend and backend
 
 const connectDb = require("./config/db"); //to connect node to cluster or online mongodb
 
+const userRouter = require("./routes/userRoutes"); // import router
+
 const app = express(); //initalizig app with express
 
 app.use(cors()); // using cors for run both apps
 
 dotenv.config(); // use .env file things and configure to node
 
-connectDb(); //running function created for db
+//connectDb(); //running function created for db
+
+app.use(express.json()); // to sow data in json fromat from backend to frontend
 
 //API creating
 //responce : res is the thing we get from backend and send it to frontend
@@ -33,6 +37,8 @@ app.get("/api/notes/:id", (req, res) => {
   const note = notes.find((n) => n._id === req.params.id);
   res.send(note);
 });
+
+app.use("/api/users", userRouter); //use reuter to send or post data
 
 const PORT = process.env.PORT || 5000;
 
