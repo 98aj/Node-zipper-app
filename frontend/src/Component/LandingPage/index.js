@@ -15,12 +15,12 @@ export default function LandingPage() {
           </div>
 
           <div className="buttonContainer">
-            <a href="/">
+            <a href="/login">
               <Button size="lg" className="landingbutton">
                 Login
               </Button>
             </a>
-            <a href="/">
+            <a href="/signup">
               <Button
                 size="lg"
                 className="landingbutton"

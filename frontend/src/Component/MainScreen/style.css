@@ -12,6 +12,7 @@
   padding: 1rem;
   font-size: 3rem;
   font-weight: 100;
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 800px) {

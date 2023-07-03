@@ -5,14 +5,15 @@ const notes = require("./data/notes");
 const dotenv = require("dotenv"); //to store secreate things like password and links
 
 const cors = require("cors"); //to connect forntend and backend
-//without cors it will give error as our forntend and baackend need to run on same server and to avoid this we install cors
-//To start fornend and backend at one command we hve user concurrently and configer below in script
+// without cors it will give error as our forntend and baackend need to run on same server and to avoid this we install cors
+// To start fornend and backend at one command we hve user concurrently and configer below in script
 // "client": "npm start --prefix frontend",
-//     "dev": "concurrently \"npm start\" \"npm run client\""
+// "dev": "concurrently \"npm start\" \"npm run client\""
 
 const connectDb = require("./config/db"); //to connect node to cluster or online mongodb
 
 const userRouter = require("./routes/userRoutes"); // import router
+const { notFound, errorHandler } = require("./middlewares/errorMiddlewares");
 
 const app = express(); //initalizig app with express
 
@@ -20,7 +21,7 @@ app.use(cors()); // using cors for run both apps
 
 dotenv.config(); // use .env file things and configure to node
 
-//connectDb(); //running function created for db
+connectDb(); //running function created for db
 
 app.use(express.json()); // to sow data in json fromat from backend to frontend
 
@@ -38,7 +39,10 @@ app.get("/api/notes/:id", (req, res) => {
   res.send(note);
 });
 
-app.use("/api/users", userRouter); //use reuter to send or post data
+app.use("/api/users", userRouter); //use router to send or post data
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
